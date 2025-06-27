@@ -28,7 +28,7 @@ export const SubjectChart = ({ subject, data }) => {
   ];
 
   return (
-    <div className="bg-white shadow rounded-lg p-4 w-full max-w-md mx-auto">
+    <div className="bg-white shadow rounded-lg p-4 w-full max-w-full md:max-w-sm mx-auto">
       <h3 className="text-center font-semibold mb-2">
         {subjectMap[subject] || subject}
       </h3>
