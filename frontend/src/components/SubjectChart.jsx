@@ -7,6 +7,7 @@ import {
   CartesianGrid,
   ResponsiveContainer,
 } from "recharts";
+import { useEffect } from "react";
 
 export const SubjectChart = ({ subject, data }) => {
   const subjectMap = {
@@ -20,6 +21,7 @@ export const SubjectChart = ({ subject, data }) => {
     dia_li: "Địa Lý",
     gdcd: "Giáo Dục Công Dân",
   };
+
   const chartData = [
     { range: ">=8", count: data[">=8"] },
     { range: "6-8", count: data["6-8"] },
@@ -27,8 +29,15 @@ export const SubjectChart = ({ subject, data }) => {
     { range: "<4", count: data["<4"] },
   ];
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      window.dispatchEvent(new Event("resize"));
+    }, 100); 
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="bg-white shadow rounded-lg p-4 w-full max-w-full md:max-w-sm mx-auto">
+    <div className="bg-white shadow rounded-lg p-4 w-full mx-auto">
       <h3 className="text-center font-semibold mb-2">
         {subjectMap[subject] || subject}
       </h3>
